@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emanuel Carllos | Portfólio</title>
+<meta name="description" content="Estudante de Ciência da Computação e licenciado em Letras (UFMA). Automação em Python, bots com IA, APIs e sistemas usados de verdade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f7f4; --surface: #ffffff; --text: #16181d; --muted: #5b616e; --line: #e3e3dc;
+    --accent: #1f5eff; --accent-soft: #e8eeff; --ok: #0f7b4f; --ok-soft: #e3f4ec;
+    --tg: #e9f3fb; --tg-bubble: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1115; --surface: #171a21; --text: #eceef2; --muted: #a0a6b3; --line: #262b35;
+      --accent: #7aa2ff; --accent-soft: #1c2640; --ok: #5fd39b; --ok-soft: #14291f;
+      --tg: #111d29; --tg-bubble: #1b2733;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1115; --surface: #171a21; --text: #eceef2; --muted: #a0a6b3; --line: #262b35;
+    --accent: #7aa2ff; --accent-soft: #1c2640; --ok: #5fd39b; --ok-soft: #14291f;
+    --tg: #111d29; --tg-bubble: #1b2733;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  header.top { padding: 72px 0 40px; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--accent); letter-spacing: .4px; }
+  h1 { font-size: clamp(34px, 6vw, 54px); line-height: 1.08; margin: 10px 0 16px; letter-spacing: -1px; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 720px; margin: 0 0 24px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-weight: 500; font-size: 15px; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .btn.primary { color: #0f1115; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0f1115; } }
+  .btn:hover { text-decoration: none; filter: brightness(.97); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 40px 0 0; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .stat b { display: block; font-size: 26px; letter-spacing: -.5px; }
+  .stat span { color: var(--muted); font-size: 14px; }
+  section { padding: 40px 0; }
+  h2 { font-size: 28px; letter-spacing: -.5px; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .proj { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px; margin-bottom: 22px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; align-items: start; }
+  .proj.solo { grid-template-columns: 1fr; }
+  .proj h3 { font-size: 23px; margin: 6px 0 4px; letter-spacing: -.3px; }
+  .tag { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+  .tag.blue { background: var(--accent-soft); color: var(--accent); }
+  .proj p.desc { color: var(--muted); margin: 6px 0 12px; }
+  .proj ul { margin: 0 0 14px; padding-left: 18px; }
+  .proj li { margin-bottom: 6px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+  .stack li { font-family: "JetBrains Mono", monospace; font-size: 12px; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--muted); margin: 0; }
+  .proj .more { font-weight: 600; font-size: 15px; }
+  .private { color: var(--muted); font-size: 14px; }
+  .shot { border-radius: 12px; border: 1px solid var(--line); width: 100%; display: block; }
+  .shots { display: grid; gap: 10px; }
+  .shots .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cap { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+  /* Telegram ilustrativo */
+  .tg { background: var(--tg); border-radius: 14px; padding: 16px; border: 1px solid var(--line); }
+  .tg .head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 600; font-size: 14px; }
+  .tg .av { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 14px; }
+  .bubble { background: var(--tg-bubble); border-radius: 12px 12px 12px 4px; padding: 12px 14px; font-size: 14px; line-height: 1.5; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+  .bubble + .bubble { margin-top: 8px; }
+  .bubble .t { color: var(--muted); font-size: 11px; text-align: right; margin-top: 4px; }
+  .kb { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+  .kb span { background: var(--tg-bubble); border-radius: 8px; text-align: center; padding: 7px; font-size: 13px; color: var(--accent); font-weight: 500; }
+  /* BOT PEGE ilustrativo */
+  .term { background: #0d1117; color: #c9d1d9; border-radius: 12px; padding: 16px; font: 12.5px/1.65 "JetBrains Mono", monospace; overflow-x: auto; }
+  .term .g { color: #3fb950; } .term .y { color: #d29922; } .term .r { color: #f85149; } .term .d { color: #8b949e; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .card h4 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .skills div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .skills b { display: block; margin-bottom: 4px; font-size: 14px; }
+  .skills span { color: var(--muted); font-size: 14.5px; }
+  footer { padding: 48px 0 64px; border-top: 1px solid var(--line); margin-top: 24px; }
+  .theme { position: fixed; top: 14px; right: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 999px; padding: 6px 12px; font: 500 13px Inter, sans-serif; cursor: pointer; }
+  @media (max-width: 820px) {
+    .proj { grid-template-columns: 1fr; padding: 20px; }
+    header.top { padding-top: 56px; }
+  }
+</style>
+</head>
+<body>
+<button class="theme" id="theme" aria-label="Alternar tema">◐ Tema</button>
+
+<header class="top wrap">
+  <div class="mono">&lt;estudante de ciência da computação · licenciado em letras /&gt;</div>
+  <h1>Emanuel Carllos</h1>
+  <p class="lead">Eu construo software para problemas que vivo de perto: automações em Python, bots com IA generativa e sistemas que já estão em uso ou foram vendidos. Sou professor de Português, e foi a rotina da escola que me levou ao código.</p>
+  <div class="links">
+    <a class="btn primary" href="#projetos">Ver projetos</a>
+    <a class="btn" href="https://github.com/EmanuelEC21" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/emanuel-carllos/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="mailto:emanoel.carllos@gmail.com">emanoel.carllos@gmail.com</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>sistemas em uso, vendidos ou encomendados</span></div>
+    <div class="stat"><b>440+</b><span>testes automatizados nos projetos</span></div>
+    <div class="stat"><b>391</b><span>habilidades da BNCC extraídas de PDF para a IA</span></div>
+    <div class="stat"><b>Python · C# · TS</b><span>e SQL nos projetos abaixo</span></div>
+  </div>
+</header>
+
+<main>
+<section id="projetos" class="wrap">
+  <h2>Projetos</h2>
+  <p class="sub">Cada projeto começou com uma dor real. As imagens de conversa e de terminal são ilustrativas; as telas do PedeAí são do sistema, com dados de demonstração.</p>
+
+  <!-- PROFON -->
+  <article class="proj">
+    <div>
+      <span class="tag blue">IA conversacional</span>
+      <h3>Profon</h3>
+      <p class="desc">Assistente de planejamento de aulas que conversa com o professor pelo Telegram.</p>
+      <ul>
+        <li>Toda manhã envia as turmas do dia, o roteiro da aula e um questionário para o quadro, gerados por IA e alinhados à BNCC.</li>
+        <li>Lê o PDF da BNCC e extrai as <b>391 habilidades</b> de Língua Portuguesa que fundamentam o conteúdo.</li>
+        <li>Funciona com <b>dois provedores de IA</b> (Claude e Gemini): respeita o limite de requisições, usa um modelo reserva e recebe respostas em JSON validado.</li>
+        <li>Quando uma aula é cancelada, a agenda se recalcula sozinha. O envio da manhã não depende da IA.</li>
+      </ul>
+      <ul class="stack"><li>Python</li><li>python-telegram-bot</li><li>Claude API</li><li>Gemini API</li><li>SQLite</li><li>pytest · 126 testes</li></ul>
+      <a class="more" href="https://github.com/EmanuelEC21/profon" target="_blank" rel="noopener">Ver código no GitHub →</a>
+    </div>
+    <div class="tg" aria-label="Exemplo ilustrativo de mensagem do bot">
+      <div class="head"><div class="av">P</div>Profon <span class="private" style="font-weight:400">· bot</span></div>
+      <div class="bubble"><b>Bom dia! Suas aulas de hoje:</b><br>
+        7h00 · <b>6º ano A</b>: Substantivos próprios e comuns<br>
+        8h40 · <b>9º ano B</b>: Gênero notícia: lide e manchete<br>
+        10h20 · <b>4º ano</b>: Pontuação no diálogo
+        <div class="t">06:30 ✓✓</div></div>
+      <div class="bubble"><b>Questionário · 9º ano B</b><br>
+        1. Qual é a função do lide em uma notícia?<br>
+        2. Que perguntas o lide costuma responder?<br>
+        3. Crie uma manchete para um fato da escola.
+        <div class="t">📎 folha-do-dia.pdf</div></div>
+      <div class="kb"><span>Não teve aula</span><span>Ver semana</span></div>
+    </div>
+  </article>
+
+  <!-- BOT PEGE -->
+  <article class="proj">
+    <div>
+      <span class="tag">Em uso por professores</span>
+      <h3>BOT PEGE</h3>
+      <p class="desc">Robô que automatiza o lançamento de diários e planejamentos no sistema Professor Online da rede municipal.</p>
+      <ul>
+        <li>Uso esse robô nas minhas turmas, e <b>colegas professores também usam</b> para lançar as próprias aulas.</li>
+        <li>Lê as aulas de planilhas Excel, abre o Chrome com Selenium, faz login e lança cada aula, pulando as que já existem.</li>
+        <li>Tem modo simulação e, no fim, um relatório com o que foi lançado, pulado ou deu erro, com log e captura de tela de cada falha.</li>
+        <li>Interface gráfica em Tkinter, com cadastro de vários professores.</li>
+      </ul>
+      <ul class="stack"><li>Python</li><li>Selenium</li><li>Tkinter</li><li>openpyxl</li><li>unittest · 30 testes</li></ul>
+      <a class="more" href="https://github.com/EmanuelEC21/bot-pege" target="_blank" rel="noopener">Ver código no GitHub →</a>
+    </div>
+    <pre class="term" aria-label="Exemplo ilustrativo do log do robô"><span class="d">[07:02:11]</span> Login no Professor Online... <span class="g">ok</span>
+<span class="d">[07:02:15]</span> Escola: E.M. Centro · Turma 6º A
+<span class="d">[07:02:19]</span>   03/11 Substantivos próprios   <span class="g">lançada</span>
+<span class="d">[07:02:24]</span>   05/11 Substantivos comuns     <span class="y">pulada</span>
+<span class="d">[07:02:29]</span>   10/11 Artigos definidos       <span class="g">lançada</span>
+<span class="d">[07:02:33]</span> Turma 9º B
+<span class="d">[07:02:38]</span>   04/11 Gênero notícia          <span class="g">lançada</span>
+<span class="d">[07:02:44]</span>   06/11 Lide e manchete         <span class="r">erro</span>
+<span class="d">           </span>   <span class="d">↳ print salvo em logs/prints/</span>
+
+<b>Resumo</b>: <span class="g">3 lançadas</span> · <span class="y">1 pulada</span> · <span class="r">1 com erro</span></pre>
+  </article>
+
+  <!-- PEDEAI -->
+  <article class="proj">
+    <div>
+      <span class="tag">Com encomenda de cliente</span>
+      <h3>PedeAí</h3>
+      <p class="desc">Sistema de gestão para restaurantes, lanchonetes e açaiterias.</p>
+      <ul>
+        <li>Pedidos, mesas, PDV, cozinha (KDS), caixa, divisão de conta, desconto e transferência entre mesas.</li>
+        <li>Versão atual: aplicativo Windows que <b>funciona sem internet</b>, em C#/.NET 10, com <b>288 testes</b>, permissões por perfil verificadas no servidor local, auditoria e backup criptografado (AES-256-GCM).</li>
+        <li>Versão anterior: web, com <b>API REST em Python (FastAPI)</b> e front-end em React. As telas ao lado são dessa versão.</li>
+      </ul>
+      <ul class="stack"><li>C#</li><li>.NET 10</li><li>ASP.NET Core</li><li>EF Core</li><li>SQLite</li><li>xUnit</li><li>FastAPI</li><li>React</li></ul>
+      <p class="private">🔒 Código privado (produto comercial). Posso mostrar ao vivo na entrevista.</p>
+    </div>
+    <div class="shots">
+      <img class="shot" src="img/pedeai-pdv.jpg" alt="Tela de PDV do PedeAí com comanda aberta e produtos" loading="lazy">
+      <div class="row">
+        <img class="shot" src="img/pedeai-dashboard.jpg" alt="Painel do PedeAí com faturamento do dia e pedidos" loading="lazy">
+        <img class="shot" src="img/pedeai-cozinha.jpg" alt="Tela da cozinha do PedeAí" loading="lazy">
+      </div>
+      <div class="cap">PDV, painel do dia e cozinha, com dados de demonstração.</div>
+    </div>
+  </article>
+
+  <!-- CABO PRO -->
+  <article class="proj solo">
+    <div>
+      <span class="tag">Vendido para a próxima eleição</span>
+      <h3>Cabo Pro</h3>
+      <p class="desc">Plataforma web para organizar a base de apoio de campanhas eleitorais.</p>
+      <ul>
+        <li>Cabos eleitorais cadastram eleitores pelo celular, com link exclusivo e PIN. A coordenação acompanha metas e relatórios em tempo real.</li>
+        <li><b>Auditoria de duplicidades</b>: cruza título eleitoral ou nome, seção e localidade, dentro da campanha e entre campanhas, para cada cargo em disputa.</li>
+        <li>Três perfis de acesso (super admin, candidato e cabo), fichas e relatórios em PDF, e dados sensíveis tratados conforme a LGPD.</li>
+      </ul>
+      <ul class="stack"><li>React 19</li><li>TypeScript</li><li>TanStack Start</li><li>Supabase · PostgreSQL</li><li>Tailwind</li><li>Vercel</li></ul>
+      <p class="private">🔒 Código e dados privados (dados de eleitores). Posso mostrar com dados fictícios na entrevista.</p>
+    </div>
+  </article>
+
+  <h3 style="margin:34px 0 14px">Outros projetos</h3>
+  <div class="grid2">
+    <div class="card"><h4>API NFC-e</h4><p>API REST em Node.js/TypeScript para emitir nota fiscal de consumidor na SEFAZ, com assinatura digital de XML e Prisma.</p></div>
+    <div class="card"><h4>VideoCaptor</h4><p>App desktop em Electron que organiza vídeos guardados no Telegram, com licenças assinadas em Ed25519 e instalador próprio.</p></div>
+    <div class="card"><h4>EC OTM</h4><p>Kit de scripts PowerShell para diagnóstico, otimização e relatório de PCs em atendimento remoto, com backup e reversão.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Da linguagem ao código</h2>
+  <p class="sub">Licenciatura em Letras pela UFMA (2023) e Ciência da Computação na Anhanguera, com início em 2026.</p>
+  <div class="grid2">
+    <div class="card"><h4>Primeiro a dor, depois o código</h4><p>O BOT PEGE e o Profon nasceram do que eu e meus colegas enfrentamos todo dia na escola. Antes de programar, eu entendo a rotina de quem vai usar.</p></div>
+    <div class="card"><h4>Linguagem é a matéria-prima da IA</h4><p>Escrever prompts, estruturar respostas e pensar em como um bot conversa com uma pessoa é o encontro da minha formação em Letras com a Computação.</p></div>
+    <div class="card"><h4>Construo com IA, entendo o que entrego</h4><p>Uso desenvolvimento assistido por IA (Claude Code) no dia a dia, com testes automatizados e documentação para garantir que o software funciona.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Habilidades</h2>
+  <div class="skills" style="margin-top:20px">
+    <div><b>Linguagens</b><span>Python, C#, TypeScript/JavaScript, SQL</span></div>
+    <div><b>Back-end e integrações</b><span>APIs REST (FastAPI, ASP.NET Core), Telegram Bot API, APIs de IA (Claude, Gemini)</span></div>
+    <div><b>Dados</b><span>PostgreSQL (Supabase), SQLite, Excel</span></div>
+    <div><b>Automação e testes</b><span>Selenium, pytest, xUnit, TDD</span></div>
+    <div><b>Ferramentas</b><span>Git, GitHub, Claude Code, React, PowerShell</span></div>
+    <div><b>Idiomas</b><span>Português nativo, Inglês avançado</span></div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <h2>Vamos conversar?</h2>
+  <p class="sub" style="margin-bottom:18px">Olho D'Água das Cunhãs, Maranhão · disponível para estágio remoto.</p>
+  <div class="links">
+    <a class="btn primary" href="mailto:emanoel.carllos@gmail.com">emanoel.carllos@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/emanuel-carllos/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/EmanuelEC21" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('theme');
+    try { var s = localStorage.getItem('tema'); if (s) root.setAttribute('data-theme', s); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = dark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('tema', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
